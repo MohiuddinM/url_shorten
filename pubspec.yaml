@@ -3,7 +3,7 @@ description: A flutter app to shorten urls
 version: 0.0.1
 
 environment:
-  sdk: ">=2.6.0 <3.0.0"
+  sdk: '>=2.19.6 <3.0.0'
 
 dependencies:
   flutter:
@@ -11,39 +11,41 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-  cupertino_icons: ^0.1.3
-  path: ^1.7.0
-  path_provider: ^1.6.11
-#  provide: ^1.0.2
-  firebase_crashlytics: ^0.1.4+1
-  firebase_analytics: ^5.0.16
-#  dio: ^2.1.3
-  rxdart: ^0.24.1
-#  i18n: ^0.9.10
-  quick_log: ^1.1.3
-  sembast: ^2.4.7+6
-  get_it: ^4.0.4
+  cupertino_icons: ^1.0.5
+  path: ^1.8.2
+  path_provider: ^2.0.14
+  firebase_crashlytics: ^3.1.1
+  firebase_analytics: ^10.2.1
+  dio: ^5.1.1
+  rxdart: ^0.27.7
+  quick_log: ^5.3.0
+  get_it: ^7.2.0
   data_connection_checker: ^0.3.4
-  uuid: ^2.2.0
-  http: ^0.12.2
-  equatable: ^1.2.3
-  validators: ^2.0.1
-  google_fonts: ^1.1.0
-  super_enum: ^0.4.2
-  flutter_spinkit: ^4.1.2+1
-  flutter_clipboard_manager: ^0.0.2
+  uuid: ^3.0.7
+  http: ^0.13.5
+  equatable: ^2.0.5
+  validators: ^3.0.0
+  google_fonts: ^4.0.3
+  flutter_spinkit: ^5.1.0
   flushbar: ^1.10.4
-  dartx: ^0.5.0
-  lottie: ^0.5.1
-  no_bloc_flutter: ^0.3.11
-  hasura: 1.5.0
+  dartx: ^1.1.0
+  lottie: ^2.3.2
+  flutter_riverpod: ^2.3.5
+  hooks_riverpod: ^2.3.5
+  flutter_hooks:
+  freezed_annotation: ^2.2.0
+  json_annotation: ^4.8.0
+  flutter_animate:
+  firebase_core: ^2.10.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  super_enum_generator:
-  build_runner: ^1.10.0
-  mockito: ^4.1.1
+  build_runner: ^2.3.3
+  mockito: ^5.4.0
+  freezed: ^2.3.2
+  json_serializable: ^6.6.1
+  flutter_lints: ^2.0.0
 
 
 flutter:

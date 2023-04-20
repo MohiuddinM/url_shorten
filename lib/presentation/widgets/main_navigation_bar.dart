@@ -1,35 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:url_shorten/core/services.dart';
-import 'package:url_shorten/presentation/blocs/main_navigation_bar_bloc.dart';
 
 class MainNavigationBar extends StatelessWidget {
-  const MainNavigationBar({Key key}) : super(key: key);
+  const MainNavigationBar({
+    super.key,
+    required this.onTap,
+    required this.currentIndex,
+  });
 
-  Widget buildBottomNavigationBar() {
-    final bloc = services<MainNavigationBarBloc>();
-
-    return StreamBuilder<int>(
-      initialData: 0,
-      stream: bloc.index,
-      builder: (context, snapshot) {
-        return BottomNavigationBar(
-          onTap: bloc.navigateTo,
-          currentIndex: snapshot?.data,
-          items: bloc.pages
-              .map(
-                (item) => BottomNavigationBarItem(
-                  icon: Icon(item.icon),
-                  title: Text(item.name),
-                ),
-              )
-              .toList(growable: false),
-        );
-      }
-    );
-  }
+  final ValueChanged<int> onTap;
+  final int currentIndex;
 
   @override
   Widget build(BuildContext context) {
-    return buildBottomNavigationBar();
+    return BottomNavigationBar(
+      onTap: onTap,
+      currentIndex: currentIndex,
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.link),
+          label: 'Shorten',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.access_time),
+          label: 'Past URLs',
+        ),
+      ],
+    );
   }
 }

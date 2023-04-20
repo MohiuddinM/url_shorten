@@ -12,7 +12,7 @@ class HideUrlApi implements UrlShortenerApi {
   Future<String> shorten(String url) async {
     await Future.delayed(Duration(seconds: 1));
     return 'conv = ' + url;
-    final response = await http.post(_url, body: 'url=' + url);
+    final response = await http.post(Uri.parse(_url), body: 'url=' + url);
 
     if (response.statusCode == 200) {
       final map = jsonDecode(response.body);

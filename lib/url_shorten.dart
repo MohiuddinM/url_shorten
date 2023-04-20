@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_shorten/presentation/pages/past_urls_page.dart';
+import 'package:url_shorten/presentation/pages/shorten_url_page.dart';
 import 'package:url_shorten/presentation/widgets/main_navigation_bar.dart';
-
-import 'core/services.dart';
-import 'presentation/pages/pages.dart';
 
 class UrlShorten extends StatefulWidget {
   @override
@@ -11,14 +10,16 @@ class UrlShorten extends StatefulWidget {
 }
 
 class _UrlShortenState extends State<UrlShorten> {
-  Widget buildBody() {
-    return Container(
-      child: Navigator(
-        key: mainPageNavigatorState,
-        initialRoute: '/',
-        onGenerateRoute: generateRoute,
-      ),
-    );
+  int index = 0;
+
+  Widget buildPage() {
+    switch (index) {
+      case 1:
+        return PastUrlsPage();
+      case 0:
+      default:
+        return ShortenUrlsPage();
+    }
   }
 
   @override
@@ -32,8 +33,15 @@ class _UrlShortenState extends State<UrlShorten> {
           style: GoogleFonts.varelaRound(fontWeight: FontWeight.bold),
         ),
       ),
-      body: buildBody(),
-      bottomNavigationBar: MainNavigationBar(),
+      body: buildPage(),
+      bottomNavigationBar: MainNavigationBar(
+        currentIndex: index,
+        onTap: (i) => setState(
+          () {
+            index = i;
+          },
+        ),
+      ),
     );
   }
 }

@@ -1,11 +1,13 @@
-class Validator {
-  static String validateUrl(String name) {
-    if (name.length < 3) {
-      return 'Please enter a valid name';
-    } else if (!name.contains(' ')) {
-      return 'Please enter your full name';
-    }
-
-    return null;
+String? validateUrl(String? url) {
+  if (url == null || url.isEmpty) {
+    return 'required';
   }
+
+  if (url.length < 3) {
+    return 'url invalid';
+  } else if (!url.contains('.')) {
+    return 'url invalid';
+  }
+
+  return null;
 }

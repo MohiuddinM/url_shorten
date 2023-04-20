@@ -1,31 +1,32 @@
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:url_shorten/core/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:url_shorten/setup.dart';
 import 'package:url_shorten/url_shorten.dart';
 
 import 'core/analytics.dart';
-import 'core/navigator.dart';
-import 'presentation/pages/pages.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  Crashlytics.instance.enableInDevMode = false;
-  FlutterError.onError = Crashlytics.instance.recordFlutterError;
+  runApp(
+    FutureBuilder<bool>(
+      future: setup(),
+      builder: (context, s) {
+        if (s.hasData && (s.data ?? false)) {
+          return ProviderScope(child: App());
+        }
 
-  await setupServices();
-
-  runApp(App());
+        return Container();
+      },
+    ),
+  );
 }
 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      navigatorKey: navigator.navigatorKey,
-      navigatorObservers: <NavigatorObserver>[Analytics.observer],
-      initialRoute: '/',
-      onGenerateRoute: generateRoute,
+      // navigatorObservers: <NavigatorObserver>[Analytics.observer],
       theme: ThemeData(primaryColor: Colors.deepPurple),
       onGenerateTitle: (context) => 'URL Shorten',
       localizationsDelegates: [

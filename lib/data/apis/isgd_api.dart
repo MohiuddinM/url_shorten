@@ -10,7 +10,8 @@ class IsGdApi implements UrlShortenerApi {
 
   @override
   Future<String> shorten(String url) async {
-    final response = await http.get(_url + url);
+    final uri = Uri.parse('$_url$url');
+    final response = await http.get(uri);
 
     if (response.statusCode == 200) {
       final map = jsonDecode(response.body);
